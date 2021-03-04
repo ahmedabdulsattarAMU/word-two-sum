@@ -14,14 +14,14 @@ public class TwoSum {
         return new String(chars);
     }
 
-    public static TwoSumsResult findTwoSum(Map<String, List<String>> wordRepetitionMap, String targetRepetition) {
+    public static TwoSumsResult findTwoSum(Map<String, Set<String>> wordRepetitionMap, String targetRepetition) {
         TwoSumsResult twoSumsResult = new TwoSumsResult();
 
         for (String wordRepetition : wordRepetitionMap.keySet()) {
             String complementRepetition = getComplementRepetition(wordRepetition, targetRepetition);
-            List<String> complementWords = wordRepetitionMap.get(complementRepetition);
+            Set<String> complementWords = wordRepetitionMap.get(complementRepetition);
             if (complementWords != null && !complementWords.isEmpty()) {
-                List<String> words = wordRepetitionMap.get(wordRepetition);
+                Set<String> words = wordRepetitionMap.get(wordRepetition);
                 twoSumsResult = new TwoSumsResult(words, complementWords);
                 break;
             }

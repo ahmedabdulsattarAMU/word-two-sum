@@ -1,28 +1,29 @@
 package com.amu;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class TwoSumsResult {
-    private final List<String> words;
-    private final List<String> complementWords;
+    private final Set<String> words;
+    private final Set<String> complementWords;
 
     public TwoSumsResult() {
-        this.words = new ArrayList<>();
-        this.complementWords = new ArrayList<>();
+        this.words = new HashSet<>();
+        this.complementWords = new HashSet<>();
     }
 
-    public TwoSumsResult(List<String> words, List<String> complementWords) {
+    public TwoSumsResult(Set<String> words, Set<String> complementWords) {
         this.words = words;
         this.complementWords = complementWords;
     }
 
-    public List<String> getWords() {
+    public Set<String> getWords() {
         return words;
     }
 
-    public List<String> getComplementWords() {
+    public Set<String> getComplementWords() {
         return complementWords;
     }
 

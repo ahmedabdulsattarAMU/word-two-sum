@@ -1,6 +1,8 @@
 package com.amu;
 
 import static org.junit.Assert.*;
+
+import com.amu.utils.ArrayUtils;
 import org.junit.Test;
 
 import java.util.*;
@@ -38,18 +40,18 @@ public class TwoSumTest {
     @Test
     public void findTwoSum_GivenMapOfWordAndTargetRepetition_FindsTwoSumWords() {
         // arrange
-        Map<String, List<String>> wordRepetitionMap = new HashMap<>();
-        wordRepetitionMap.put(TwoSum.getRepetition("ami"), Collections.singletonList("ami"));
-        wordRepetitionMap.put(TwoSum.getRepetition("diet"), Arrays.asList("diet", "tied"));
-        wordRepetitionMap.put(TwoSum.getRepetition("ne"), Arrays.asList("ne", "en"));
-        wordRepetitionMap.put(TwoSum.getRepetition("amine"), Collections.singletonList("amine"));
+        Map<String, Set<String>> wordRepetitionMap = new HashMap<>();
+        wordRepetitionMap.put(TwoSum.getRepetition("ami"), Collections.singleton("ami"));
+        wordRepetitionMap.put(TwoSum.getRepetition("diet"), ArrayUtils.asSet("diet", "tied"));
+        wordRepetitionMap.put(TwoSum.getRepetition("ne"), ArrayUtils.asSet("ne", "en"));
+        wordRepetitionMap.put(TwoSum.getRepetition("amine"), Collections.singleton("amine"));
 
         // act
         TwoSumsResult twoSumsResult = TwoSum.findTwoSum(wordRepetitionMap, "aeimn");
 
         // assert
-        List<String> words = Collections.singletonList("ami");
-        List<String> complementWords = Arrays.asList("ne", "en");
+        Set<String> words = Collections.singleton("ami");
+        Set<String> complementWords = ArrayUtils.asSet("ne", "en");
         assertEquals(new TwoSumsResult(words, complementWords), twoSumsResult);
     }
 
