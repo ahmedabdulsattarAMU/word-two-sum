@@ -4,14 +4,6 @@ import java.util.*;
 
 public class TwoSum {
 
-    private String firstWord;
-    private String secondWord;
-
-    public TwoSum(String firstWord, String secondWord) {
-        this.firstWord = firstWord;
-        this.secondWord = secondWord;
-    }
-
     public static String getRepetition(String word) {
         if (word == null) {
             return "";
@@ -65,35 +57,5 @@ public class TwoSum {
         }
 
         return stringBuilder.toString();
-    }
-
-    public String getFirstWord() {
-        return firstWord;
-    }
-
-    public void setFirstWord(String firstWord) {
-        this.firstWord = firstWord;
-    }
-
-    public String getSecondWord() {
-        return secondWord;
-    }
-
-    public void setSecondWord(String secondWord) {
-        this.secondWord = secondWord;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TwoSum twoSum = (TwoSum) o;
-        return (firstWord.equalsIgnoreCase(twoSum.firstWord) && secondWord.equalsIgnoreCase(twoSum.secondWord))
-                || (firstWord.equalsIgnoreCase(twoSum.secondWord) && secondWord.equalsIgnoreCase(twoSum.firstWord));
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstWord, secondWord);
     }
 }

@@ -14,16 +14,6 @@ public class TwoSumTest {
     }
 
     @Test
-    public void equals_GivenEqualTwoSum_ReturnsTrue() {
-        assertEquals(new TwoSum("Yezan", "Rafed"), new TwoSum("Rafed", "Yezan"));
-    }
-
-    @Test
-    public void equals_GivenDifferentTwoSum_ReturnsFalse() {
-        assertNotEquals(new TwoSum("Yezan", "Ahmed"), new TwoSum("Rafed", "Yezan"));
-    }
-
-    @Test
     public void lettersBelongToRepetition_GivenLettersContainedInRepetition_ReturnsTrue() {
         assertTrue(TwoSum.lettersBelongToRepetition("ador", "abcdgmnopqr"));
     }
