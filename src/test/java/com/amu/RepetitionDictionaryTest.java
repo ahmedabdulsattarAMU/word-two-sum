@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class RepetitionDictionaryTest {
 
     @Test
-    public void wordsToRepetitionDictionary_GivenListOfWords_ReturnsRepetitionDictionary() {
+    public void load_GivenListOfWords_ReturnsRepetitionDictionary() {
         RepetitionDictionary dictionary = new RepetitionDictionary(new FakeWordRepository());
 
         dictionary.load();

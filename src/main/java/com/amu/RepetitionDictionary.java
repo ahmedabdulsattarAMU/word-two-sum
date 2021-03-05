@@ -33,7 +33,7 @@ public class RepetitionDictionary {
         TwoSumsResult twoSumsResult = new TwoSumsResult();
 
         for (String wordRepetition : data.keySet()) {
-            String complementRepetition =  new Word(wordRepetition)
+            String complementRepetition = new Word(wordRepetition)
                     .getComplementRepetition(targetRepetition);
             Set<Word> complementWords = data.get(complementRepetition);
 
