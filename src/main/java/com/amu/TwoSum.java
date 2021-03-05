@@ -58,8 +58,4 @@ public class TwoSum {
 
         return stringBuilder.toString();
     }
-
-    public static Map<String, List<String>> wordsToRepetitionDictionary(List<String> words) {
-        return new HashMap<>();
-    }
 }

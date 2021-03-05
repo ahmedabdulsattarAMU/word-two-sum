@@ -54,35 +54,4 @@ public class TwoSumTest {
         Set<String> complementWords = ArrayUtils.asSet("ne", "en");
         assertEquals(new TwoSumsResult(words, complementWords), twoSumsResult);
     }
-
-    @Test
-    public void wordsToRepetitionDictionary_GivenListOfWords_ReturnsRepetitionDictionary() {
-        List<String> words = Arrays.asList(
-                "ahmed",
-                "adrien",
-                "julien",
-                "elon",
-                "leon",
-                "melon",
-                "juice",
-                "lemon",
-                "tied",
-                "car",
-                "diet",
-                "aim",
-                "mia");
-
-        Map<String, List<String>> dictionary = TwoSum.wordsToRepetitionDictionary(words);
-
-        Map<String, List<String>> expectedDictionary = new HashMap<>();
-        expectedDictionary.put("adehm", Collections.singletonList("ahmed"));
-        expectedDictionary.put("adeinr", Collections.singletonList("adrien"));
-        expectedDictionary.put("elijnu", Collections.singletonList("julien"));
-        expectedDictionary.put("elno", Arrays.asList("elon", "leon"));
-        expectedDictionary.put("ceiju", Collections.singletonList("juice"));
-        expectedDictionary.put("deit", Arrays.asList("tied", "diet"));
-        expectedDictionary.put("acr", Collections.singletonList("car"));
-        expectedDictionary.put("aim", Arrays.asList("aim", "mia"));
-        assertEquals(expectedDictionary, dictionary);
-    }
 }
