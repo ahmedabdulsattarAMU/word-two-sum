@@ -9,25 +9,43 @@ public class TwoSumsResultTest {
 
     @Test
     public void equals_GivenEqualTwoSumsResult_ReturnsTrue() {
-        assertEquals(
-                new TwoSumsResult(ArrayUtils.asSet("foo", "bar"), ArrayUtils.asSet("fooBar", "BarFoo")),
-                new TwoSumsResult(ArrayUtils.asSet("foo", "bar"), ArrayUtils.asSet("fooBar", "BarFoo"))
+        TwoSumsResult firstResult = new TwoSumsResult(
+                ArrayUtils.asSet(new Word("foo"), new Word("bar")),
+                ArrayUtils.asSet(new Word("fooBar"), new Word("BarFoo"))
         );
+        TwoSumsResult secondResult = new TwoSumsResult(
+                ArrayUtils.asSet(new Word("foo"), new Word("bar")),
+                ArrayUtils.asSet(new Word("fooBar"), new Word("BarFoo"))
+        );
+
+        assertEquals(firstResult, secondResult);
     }
 
     @Test
     public void equals_GivenEqualTwoSumsResultInDifferentOrder_ReturnsTrue() {
-        assertEquals(
-                new TwoSumsResult(ArrayUtils.asSet("foo", "bar"), ArrayUtils.asSet("fooBar", "BarFoo")),
-                new TwoSumsResult(ArrayUtils.asSet("fooBar", "BarFoo"), ArrayUtils.asSet("foo", "bar"))
+        TwoSumsResult firstResult = new TwoSumsResult(
+                ArrayUtils.asSet(new Word("foo"), new Word("bar")),
+                ArrayUtils.asSet(new Word("fooBar"), new Word("BarFoo"))
         );
+        TwoSumsResult secondResult = new TwoSumsResult(
+                ArrayUtils.asSet(new Word("fooBar"), new Word("BarFoo")),
+                ArrayUtils.asSet(new Word("foo"), new Word("bar"))
+        );
+
+        assertEquals(firstResult, secondResult);
     }
 
     @Test
     public void equals_GivenDifferentTwoSumsResult_ReturnsFalse() {
-        assertNotEquals(
-                new TwoSumsResult(ArrayUtils.asSet("foo", "bar"), ArrayUtils.asSet("fooBar", "BarFoo")),
-                new TwoSumsResult(ArrayUtils.asSet("zaa", "Bzr"), ArrayUtils.asSet("fooBar", "BarFoo"))
+        TwoSumsResult firstResult = new TwoSumsResult(
+                ArrayUtils.asSet(new Word("foo"), new Word("bar")),
+                ArrayUtils.asSet(new Word("fooBar"), new Word("BarFoo"))
         );
+        TwoSumsResult secondResult = new TwoSumsResult(
+                ArrayUtils.asSet(new Word("zaa"), new Word("Bzr")),
+                ArrayUtils.asSet(new Word("fooBar"), new Word("BarFoo"))
+        );
+
+        assertNotEquals(firstResult, secondResult);
     }
 }

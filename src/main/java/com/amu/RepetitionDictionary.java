@@ -7,9 +7,9 @@ import java.util.*;
 
 public class RepetitionDictionary {
 
-    private WordRepository wordRepository;
+    private final WordRepository wordRepository;
 
-    private final Map<String, Set<String>> data;
+    private final Map<String, Set<Word>> data;
 
     public RepetitionDictionary(WordRepository wordRepository) {
         this.wordRepository = wordRepository;
@@ -17,9 +17,9 @@ public class RepetitionDictionary {
     }
 
     public void load() {
-        for (String word : wordRepository.getAll()) {
-            String repetition = TwoSum.getRepetition(word);
-            Set<String> associatedWords = data.get(repetition);
+        for (Word word : wordRepository.getAll()) {
+            String repetition = word.getRepetition();
+            Set<Word> associatedWords = data.get(repetition);
             if (associatedWords != null) {
                 associatedWords.add(word);
             }
@@ -29,7 +29,25 @@ public class RepetitionDictionary {
         }
     }
 
-    public Map<String, Set<String>> getData() {
+    public TwoSumsResult findAllTwoSums(String targetRepetition) {
+        TwoSumsResult twoSumsResult = new TwoSumsResult();
+
+        for (String wordRepetition : data.keySet()) {
+            String complementRepetition =  new Word(wordRepetition)
+                    .getComplementRepetition(targetRepetition);
+            Set<Word> complementWords = data.get(complementRepetition);
+
+            if (complementWords != null && !complementWords.isEmpty()) {
+                Set<Word> words = data.get(wordRepetition);
+                twoSumsResult = new TwoSumsResult(words, complementWords);
+                break;
+            }
+        }
+
+        return twoSumsResult;
+    }
+
+    public Map<String, Set<Word>> getData() {
         return data;
     }
 }
