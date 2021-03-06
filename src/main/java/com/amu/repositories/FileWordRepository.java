@@ -7,6 +7,7 @@ import java.util.List;
 public class FileWordRepository implements WordRepository {
     @Override
     public List<Word> getAll() {
+        //@Todo: read from a file
         return null;
     }
 }
