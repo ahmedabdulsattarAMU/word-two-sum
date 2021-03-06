@@ -37,6 +37,7 @@ public class TwoSumsResult {
 
     @Override
     public int hashCode() {
-        return Objects.hash(words, complementWords);
+        return Objects.hash(words, complementWords)
+                + Objects.hash(complementWords, words);
     }
 }

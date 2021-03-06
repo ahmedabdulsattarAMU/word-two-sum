@@ -2,6 +2,8 @@ package com.amu;
 
 import com.amu.repositories.InMemoryWordRepository;
 
+import java.util.Set;
+
 /**
  * Hello world!
  *
@@ -12,11 +14,15 @@ public class App
     {
         RepetitionDictionary dictionary = new RepetitionDictionary(new InMemoryWordRepository());
         dictionary.load();
-        TwoSumsResult twoSumsResult = dictionary.findAllTwoSums("deeilnto");
+        Set<TwoSumsResult> twoSumsResults = dictionary.findAllTwoSums("deeilnto");
         System.out.println("Two-sum results:");
-        System.out.print("Words => ");
-        System.out.println(twoSumsResult.getWords());
-        System.out.print("Complement words => ");
-        System.out.println(twoSumsResult.getComplementWords());
+        int idx = 0;
+        for (TwoSumsResult result: twoSumsResults) {
+            System.out.println("\tResult " + idx + ": ");
+            System.out.print("\t\tWords => ");
+            System.out.println(result.getWords());
+            System.out.print("\t\tComplement words => ");
+            System.out.println(result.getComplementWords() + "\n");
+        }
     }
 }

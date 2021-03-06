@@ -29,8 +29,8 @@ public class RepetitionDictionary {
         }
     }
 
-    public TwoSumsResult findAllTwoSums(String targetRepetition) {
-        TwoSumsResult twoSumsResult = new TwoSumsResult();
+    public Set<TwoSumsResult> findAllTwoSums(String targetRepetition) {
+        Set<TwoSumsResult> twoSumsResults = new HashSet<>();
 
         for (String wordRepetition : data.keySet()) {
             String complementRepetition = new Word(wordRepetition)
@@ -39,12 +39,11 @@ public class RepetitionDictionary {
 
             if (complementWords != null && !complementWords.isEmpty()) {
                 Set<Word> words = data.get(wordRepetition);
-                twoSumsResult = new TwoSumsResult(words, complementWords);
-                break;
+                twoSumsResults.add(new TwoSumsResult(words, complementWords));
             }
         }
 
-        return twoSumsResult;
+        return twoSumsResults;
     }
 
     public Map<String, Set<Word>> getData() {

@@ -37,12 +37,16 @@ public class RepetitionDictionaryTest {
         dictionary.load();
 
         // act
-        TwoSumsResult twoSumsResult = dictionary.findAllTwoSums("deeilnot");
+        Set<TwoSumsResult> twoSumsResults = dictionary.findAllTwoSums("deeilnot");
 
         // assert
-        Set<Word> words = ArrayUtils.asSet(new Word("elon"), new Word("leon"));
-        Set<Word> complementWords = ArrayUtils.asSet(new Word("tied"), new Word("diet"));
-        assertEquals(new TwoSumsResult(words, complementWords), twoSumsResult);
+        Set<TwoSumsResult> expectedResults = Collections.singleton(
+                new TwoSumsResult(
+                        ArrayUtils.asSet(new Word("elon"), new Word("leon")),
+                        ArrayUtils.asSet(new Word("tied"), new Word("diet")))
+        );
+
+        assertEquals(expectedResults, twoSumsResults);
     }
 
     @Test
@@ -57,7 +61,9 @@ public class RepetitionDictionaryTest {
                         new Word("tied"),
                         new Word("ne"),
                         new Word("en"),
-                        new Word("amine")
+                        new Word("amine"),
+                        new Word("ai"),
+                        new Word("men")
                 );
             }
         };
@@ -66,12 +72,20 @@ public class RepetitionDictionaryTest {
         dictionary.load();
 
         // act
-        TwoSumsResult twoSumsResult = dictionary.findAllTwoSums("aeimn");
+        Set<TwoSumsResult> twoSumsResults = dictionary.findAllTwoSums("aeimn");
 
         // assert
-        Set<Word> words = Collections.singleton(new Word("ami"));
-        Set<Word> complementWords = ArrayUtils.asSet(new Word("ne"), new Word("en"));
-        assertEquals(new TwoSumsResult(words, complementWords), twoSumsResult);
+        Set<TwoSumsResult> expectedResults = ArrayUtils.asSet(
+            new TwoSumsResult(
+                  Collections.singleton(new Word("ami")),
+                  ArrayUtils.asSet(new Word("ne"), new Word("en"))),
+            new TwoSumsResult(
+                    Collections.singleton(new Word("ai")),
+                    Collections.singleton(new Word("men"))
+            )
+        );
+
+        assertEquals(expectedResults, twoSumsResults);
     }
 }
 
